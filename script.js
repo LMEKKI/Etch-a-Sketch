@@ -1,9 +1,16 @@
 
 const container = document.querySelector(".container");
-const width = 960;
+const width = 560;
 let size;
-let row = "";
-let square = "";
+let row;
+let square;
+let colorSelector = document.querySelector("#colorinput")
+let numOfGrid = document.querySelector("#numOfGrid")
+let btnsubmit;
+
+
+
+
 
 
 
@@ -39,11 +46,11 @@ function generatRow(num) {
 
 }
 
-(generatRow(16))
+(generatRow(100))
 
 
-function addcolor(e) {
-  e.backgroundColor = "red";
+function addcolor(p) {
+  square.style.backgroundColor = p;
 
 }
 
@@ -54,3 +61,17 @@ container.addEventListener('mouseover', function (e) {
     e.target.classList.add("squareOver")
   }
 });
+
+
+
+
+
+document.getElementById("btnSubmit").onclick = function () {
+  let s = document.querySelector("newdiv")
+  container.removeChild(row)
+  let value = numOfGrid.value
+  let colorValue = colorSelector.value
+
+  addcolor(colorValue)
+  generatRow(value)
+}

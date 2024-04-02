@@ -11,6 +11,28 @@
     <nav></nav>
     <header>
       <h1>Welcome to our Etch a sketch</h1>
+
+      <div class="option">
+        <div class="numOption">
+          <label for="numOfGrid">Number of grid (10-100):</label>
+
+          <input
+            type="number"
+            id="numOfGrid"
+            name="numOfGrid"
+            min="10"
+            max="100"
+          />
+        </div>
+        <form action="">
+        <div class="colorOption">
+          <input type="color" id="colorinput" name="color" value="#e66465" />
+          <label for="head">Select a color</label>
+        </form>
+        </div>
+
+        <button id="btnSubmit">Submit</button>
+      </div>
     </header>
 
     <div class="container"></div>
