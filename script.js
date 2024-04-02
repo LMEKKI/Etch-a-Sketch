@@ -1,5 +1,5 @@
 
-const container = document.querySelector(".container");
+let container;
 const width = 560;
 let size;
 let row;
@@ -7,6 +7,7 @@ let square;
 let colorSelector = document.querySelector("#colorinput")
 let numOfGrid = document.querySelector("#numOfGrid")
 let btnsubmit;
+let color = colorSelector.value
 
 
 
@@ -16,6 +17,11 @@ let btnsubmit;
 
 function generatRow(num) {
   size = (width / num - 0.1);
+
+  container = document.createElement("div")
+  container.classList.add("container")
+
+  document.querySelector("body").appendChild(container)
 
   for (let i = 0; i < num - 1; i++) {
 
@@ -40,6 +46,13 @@ function generatRow(num) {
 
 
 
+    container.addEventListener('mouseover', function (e) {
+      // But only alert for elements that have an alert-button class
+      if (e.target.classList.contains('squares')) {
+        e.target.style.backgroundColor = color
+      }
+    });
+
 
 
   }
@@ -48,30 +61,23 @@ function generatRow(num) {
 
 (generatRow(100))
 
-
-function addcolor(p) {
-  square.style.backgroundColor = p;
-
-}
-
-
-container.addEventListener('mouseover', function (e) {
-  // But only alert for elements that have an alert-button class
-  if (e.target.classList.contains('squares')) {
-    e.target.classList.add("squareOver")
-  }
+colorSelector.addEventListener('input', () => {
+  color = colorSelector.value;
 });
 
-
-
-
-
 document.getElementById("btnSubmit").onclick = function () {
-  let s = document.querySelector("newdiv")
-  container.removeChild(row)
-  let value = numOfGrid.value
-  let colorValue = colorSelector.value
 
-  addcolor(colorValue)
+  document.querySelectorAll(".container").forEach(e => e.remove());
+
+  color = colorSelector.value;
+
+
+  let value = numOfGrid.value
+
   generatRow(value)
 }
+
+
+
+
+
