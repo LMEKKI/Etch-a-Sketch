@@ -1,15 +1,56 @@
+
 const container = document.querySelector(".container");
+const width = 960;
+let size;
+let row = "";
+let square = "";
 
-let numberOfDiv = 16 * 16;
 
-function addElement(number) {
-  let newDiv = "";
 
-  for (let index = 0; index < number - 1; index++) {
-    newDiv += `<div><p>${index}</p></div>`;
+function generatRow(num) {
+  size = (width / num - 0.1);
+
+  for (let i = 0; i < num - 1; i++) {
+
+    row = document.createElement("div")
+    row.style.width = (size + "px")
+    row.style.height = (size + "px")
+    row.classList.add("newdiv")
+
+    container.appendChild(row)
+    for (let i = 0; i < num - 1; i++) {
+
+      square = document.createElement("div")
+      square.style.width = (size + "px")
+      square.style.height = (size + "px")
+      square.classList.add("squares")
+
+      row.appendChild(square)
+
+
+
+    }
+
+
+
+
+
   }
 
-  container.innerHTML = newDiv;
 }
 
-addElement(numberOfDiv);
+(generatRow(16))
+
+
+function addcolor(e) {
+  e.backgroundColor = "red";
+
+}
+
+
+container.addEventListener('mouseover', function (e) {
+  // But only alert for elements that have an alert-button class
+  if (e.target.classList.contains('squares')) {
+    e.target.classList.add("squareOver")
+  }
+});
